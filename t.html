@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Revlytap · herramienta de calle</title>
+<style>
+:root{--ink:#15181c;--soft:#5b6472;--line:#e3e7ee;--tint:#f6f8fb;--green:#34a853;--blue:#4285f4;--red:#ea4335;--yellow:#fbbc04}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+     color:var(--ink);background:#f2f4f8;line-height:1.55;padding:14px;padding-bottom:60px}
+.wrap{max-width:640px;margin:0 auto}
+h1{font-size:19px;letter-spacing:-.02em;margin-bottom:2px}
+.sub{color:var(--soft);font-size:13px;margin-bottom:16px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:12px}
+h2{font-size:15px;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.n{width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font-size:12px;font-weight:700;
+   display:inline-flex;align-items:center;justify-content:center;flex:0 0 22px}
+p{font-size:14px;color:var(--soft);margin-top:6px}
+p b{color:var(--ink)}
+label{display:block;font-size:12px;font-weight:700;margin:12px 0 5px;text-transform:uppercase;letter-spacing:.04em;color:var(--soft)}
+input{width:100%;border:1.5px solid var(--line);border-radius:10px;padding:12px;font:inherit;font-size:16px;background:#fff;color:var(--ink)}
+input:focus{outline:0;border-color:var(--ink)}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+button,a.btn{flex:1;min-width:130px;text-align:center;text-decoration:none;border:0;border-radius:10px;
+  padding:12px 14px;font:inherit;font-size:14px;font-weight:700;cursor:pointer;display:inline-block}
+.p{background:var(--ink);color:#fff}
+.s{background:#fff;color:var(--ink);border:1.5px solid var(--line)}
+.g{background:var(--green);color:#fff}
+.out{margin-top:12px;background:var(--tint);border:1px solid var(--line);border-radius:10px;padding:12px;
+     font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;word-break:break-all;min-height:44px;color:var(--ink)}
+.tip{background:#fffbe9;border:1px solid #f4e2a8;border-radius:10px;padding:11px;font-size:13px;margin-top:10px;color:#6b5a1e}
+.bad{background:#fdeceb;border:1px solid #f5c6c2;border-radius:10px;padding:11px;font-size:13px;margin-top:10px;color:#8c231b}
+ol{margin:8px 0 0 18px;font-size:14px;color:var(--soft)}
+ol li{margin-bottom:6px}
+ol li b{color:var(--ink)}
+code{background:var(--tint);border:1px solid var(--line);border-radius:5px;padding:1px 5px;font-size:12.5px}
+.ok{color:var(--green);font-weight:700}
+hr{border:0;border-top:1px solid var(--line);margin:14px 0}
+.foot{text-align:center;font-size:12px;color:#9aa3b0;margin-top:18px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>Herramienta de calle</h1>
+<div class="sub">Revlytap · para usar del celular mientras vendés</div>
+
+<!-- ============ 1. DEMO ============ -->
+<div class="card">
+  <h2><span class="n">1</span> Antes de entrar: preparar la demo</h2>
+  <p>Apuntá <b>uno de tus 5 tags de muestra</b> al restaurante que vas a visitar. Cuando el dueño apoye el celular, ve <b>su propia</b> pantalla de reseña. Eso vende solo.</p>
+  <p>Conseguí el link de abajo, y en Short.io cambiale el destino a <code>000001</code>. Tarda 20 segundos.</p>
+</div>
+
+<!-- ============ 2. LINK ============ -->
+<div class="card">
+  <h2><span class="n">2</span> Conseguir el link de reseña</h2>
+
+  <p><b>Camino rápido — se lo pedís al dueño.</b> Que abra Google Maps → su foto de perfil → <b>Perfil de tu negocio</b> → <b>Pedir reseñas</b> → copiar. Te pasa un link tipo <code>g.page/r/…/review</code>. Ese es el mejor de todos.</p>
+  <div class="tip">Si te dice que no tiene el perfil a su nombre, anotalo: ese local no puede ni responder reseñas. Es un argumento de venta enorme, y además vas a tener que conseguir el link vos.</div>
+
+  <hr>
+
+  <p><b>Camino propio — si el dueño no lo tiene a mano.</b> Necesitás el Place ID del local:</p>
+  <ol>
+    <li>Tocá el botón de abajo: te abre la búsqueda de Google del local.</li>
+    <li>En el navegador andá a <b>Compartir → Buscar en la página</b> y buscá <code>ChIJ</code>.</li>
+    <li>Copiá esa cadena entera (empieza con <code>ChIJ</code>, sin espacios) y pegala acá abajo.</li>
+  </ol>
+
+  <label for="q">Nombre y dirección del local</label>
+  <input id="q" placeholder="EMA Latin Restaurant Bar, 67-03 Woodside Ave" autocomplete="off">
+  <div class="row">
+    <a class="btn s" id="bsearch" target="_blank" rel="noopener">Buscar en Google</a>
+  </div>
+
+  <label for="pid">Place ID (empieza con ChIJ)</label>
+  <input id="pid" placeholder="ChIJ_2nuewJfwokRr_CxTH1AvTk" autocomplete="off" spellcheck="false">
+
+  <div class="out" id="out">El link de reseña aparece acá.</div>
+  <div id="err"></div>
+
+  <div class="row">
+    <button class="p" onclick="copy()">Copiar link</button>
+    <a class="btn s" id="bcheck" target="_blank" rel="noopener">Ver qué local es</a>
+    <a class="btn g" id="btest" target="_blank" rel="noopener">Probar el link</a>
+  </div>
+  <div class="tip"><b>Siempre</b> tocá "Ver qué local es" antes de guardar. Un Place ID mal copiado te manda las reseñas al negocio de al lado y no te enterás nunca.</div>
+</div>
+
+<!-- ============ 3. SHORT.IO ============ -->
+<div class="card">
+  <h2><span class="n">3</span> Cargarlo en Short.io</h2>
+  <ol>
+    <li>Abrí <b>app.short.io</b> → Enlaces de marca.</li>
+    <li>Buscá el número del tag que vendiste (el que dice abajo del QR).</li>
+    <li>Lápiz → pegá el link de reseña en el destino → Guardar.</li>
+    <li>Apoyá tu propio celular en el tag para confirmar que abre bien.</li>
+  </ol>
+  <div class="tip">No hace falta que hagas esto parado en el mostrador. Vendé, anotá el número del tag y el nombre del local, y configurá todo a la noche de una sentada. Mientras tanto el tag lleva a tu página, no a un error.</div>
+  <div class="row"><a class="btn s" href="https://app.short.io" target="_blank" rel="noopener">Abrir Short.io</a></div>
+</div>
+
+<!-- ============ 4. ENTREGA ============ -->
+<div class="card">
+  <h2><span class="n">4</span> Antes de irte del local</h2>
+  <ol>
+    <li><b>Bloqueá el tag.</b> Si queda desbloqueado, cualquiera se lo reprograma con el celular en cinco segundos.</li>
+    <li>Anotá <b>número de tag + nombre del local + teléfono del dueño</b>.</li>
+    <li>Hacelo tocar al dueño una vez delante tuyo. Que lo vea funcionar.</li>
+    <li>Decile que si cambia de local o de nombre, se lo redirigís sin costo. Eso te deja la puerta abierta.</li>
+  </ol>
+</div>
+
+<div class="foot">revlytap.com · uso interno</div>
+</div>
+
+<script>
+var q = document.getElementById('q'),
+    pid = document.getElementById('pid'),
+    out = document.getElementById('out'),
+    err = document.getElementById('err'),
+    bs = document.getElementById('bsearch'),
+    bc = document.getElementById('bcheck'),
+    bt = document.getElementById('btest');
+
+function clean(v){ return (v || '').trim().replace(/\s+/g, ''); }
+
+function review(id){ return 'https://search.google.com/local/writereview?placeid=' + encodeURIComponent(id); }
+function place(id){ return 'https://www.google.com/maps/place/?q=place_id:' + encodeURIComponent(id); }
+
+function refresh(){
+  var s = clean(q.value);
+  bs.href = s ? 'https://www.google.com/search?q=' + encodeURIComponent(q.value.trim())
+              : 'https://www.google.com/';
+
+  var id = clean(pid.value);
+  err.innerHTML = '';
+  if (!id) {
+    out.textContent = 'El link de reseña aparece acá.';
+    bc.removeAttribute('href'); bt.removeAttribute('href');
+    return;
+  }
+  if (id.indexOf('ChIJ') !== 0) {
+    err.innerHTML = '<div class="bad">Eso no parece un Place ID. Tiene que empezar con <b>ChIJ</b> y no llevar espacios ni comillas.</div>';
+  }
+  out.textContent = review(id);
+  bc.href = place(id);
+  bt.href = review(id);
+}
+
+function copy(){
+  var id = clean(pid.value);
+  if (!id) { return; }
+  var t = review(id);
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(t).then(function(){ flash('Copiado'); }, function(){ fallback(t); });
+  } else { fallback(t); }
+}
+function fallback(t){
+  var i = document.createElement('textarea');
+  i.value = t; document.body.appendChild(i); i.select();
+  try { document.execCommand('copy'); flash('Copiado'); } catch(e) { flash('Copialo a mano de arriba'); }
+  document.body.removeChild(i);
+}
+function flash(m){
+  var d = document.createElement('div');
+  d.className = 'tip'; d.textContent = m;
+  err.innerHTML = ''; err.appendChild(d);
+  setTimeout(function(){ if (err.contains(d)) err.removeChild(d); }, 2000);
+}
+
+q.addEventListener('input', refresh);
+pid.addEventListener('input', refresh);
+refresh();
+</script>
+</body>
+</html>
