@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Revlytap — Get more Google reviews with one tap</title>
+<meta name="description" content="Tap-to-review stands for restaurants in New York. Your customer taps their phone or scans the QR and lands straight on your Google review page. No app, no setup, no monthly fee.">
+<meta property="og:title" content="Revlytap — Get more Google reviews with one tap">
+<meta property="og:description" content="Tap-to-review stands for restaurants in New York. No app, no monthly fee.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#1a1a1a">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⭐</text></svg>">
+<style>
+:root{
+  --ink:#15181c; --soft:#5b6472; --line:#e6e9ee; --bg:#fff; --tint:#f6f8fb;
+  --blue:#4285f4; --red:#ea4335; --yellow:#fbbc04; --green:#34a853;
+  --radius:16px; --max:1080px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Poppins',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
+/* language toggle - !important so no layout rule below can re-show a hidden language */
+[data-es]{display:none !important}
+html[data-lang="es"] [data-en]{display:none !important}
+html[data-lang="es"] [data-es]{display:inline !important}
+
+/* ---------- header ---------- */
+header{
+  position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--line);
+}
+.hd{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:9px;font-weight:700;font-size:19px;letter-spacing:-.02em}
+.dot{width:11px;height:11px;border-radius:50%;background:var(--blue);position:relative}
+.dot::after{content:"";position:absolute;left:6px;top:-5px;width:8px;height:8px;border-radius:50%;background:var(--yellow)}
+.hd-right{display:flex;align-items:center;gap:10px}
+.lang{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.lang button{
+  border:0;background:transparent;font:inherit;font-size:13px;font-weight:600;color:var(--soft);
+  padding:6px 13px;cursor:pointer;transition:.15s;font-family:inherit;
+}
+.lang button.on{background:var(--ink);color:#fff}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  border-radius:999px;font-weight:600;font-size:15px;text-decoration:none;
+  padding:13px 24px;transition:.18s;border:0;cursor:pointer;font-family:inherit;line-height:1.2;
+}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-dark:hover{background:#000;transform:translateY(-1px)}
+.btn-wa{background:#25d366;color:#fff}
+.btn-wa:hover{background:#1fb857;transform:translateY(-1px)}
+.btn-ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line)}
+.btn-ghost:hover{border-color:var(--ink)}
+.btn-sm{padding:9px 17px;font-size:14px}
+@media(max-width:640px){.hd .btn{display:none}}
+
+/* ---------- hero ---------- */
+.hero{padding:64px 0 56px;position:relative;overflow:hidden}
+.hero::before,.hero::after{content:"";position:absolute;border-radius:50%;opacity:.10;pointer-events:none}
+.hero::before{width:340px;height:340px;background:var(--blue);top:-150px;right:-90px}
+.hero::after{width:230px;height:230px;background:var(--yellow);bottom:-130px;left:-90px}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:52px;align-items:center;position:relative}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:7px;background:var(--tint);border:1px solid var(--line);
+  border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;color:var(--soft);margin-bottom:20px;
+}
+h1{font-size:clamp(33px,5.1vw,52px);line-height:1.08;letter-spacing:-.03em;font-weight:700;margin-bottom:18px}
+h1 em{font-style:normal;background:linear-gradient(180deg,transparent 62%,rgba(251,188,4,.55) 62%)}
+.lead{font-size:clamp(16px,2vw,19px);color:var(--soft);max-width:30em;margin-bottom:28px}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap}
+.trust{display:flex;gap:22px;flex-wrap:wrap;margin-top:26px;font-size:13.5px;color:var(--soft)}
+.trust > span{display:flex;align-items:center;gap:6px}
+.tick{color:var(--green);font-weight:700}
+
+/* ---------- product card ---------- */
+.card{
+  background:linear-gradient(160deg,#fbfcfe,#f2f5fa);border:1px solid var(--line);
+  border-radius:26px;padding:30px 24px;text-align:center;box-shadow:0 18px 44px -26px rgba(20,25,35,.4);
+}
+.card h3{font-size:19px;letter-spacing:-.02em;margin-bottom:14px}
+.gletters{font-size:52px;font-weight:700;letter-spacing:-.04em;line-height:1;margin-bottom:10px}
+.gletters i{font-style:normal}
+.stars{font-size:26px;letter-spacing:3px;color:var(--yellow);margin-bottom:16px}
+.card-row{display:flex;gap:14px;justify-content:center;align-items:center;margin-bottom:14px}
+.mini{
+  width:78px;height:78px;border:1.5px solid var(--line);border-radius:12px;background:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--soft);
+}
+.qrgrid{width:56px;height:56px;image-rendering:pixelated}
+.card small{color:var(--soft);font-size:12.5px}
+
+/* ---------- sections ---------- */
+section{padding:64px 0}
+.alt{background:var(--tint);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+h2{font-size:clamp(25px,3.4vw,35px);letter-spacing:-.025em;line-height:1.15;margin-bottom:12px;font-weight:700}
+.sub{color:var(--soft);max-width:34em;margin-bottom:38px;font-size:16.5px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.step{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px 22px}
+.alt .step{background:#fff}
+.num{
+  width:34px;height:34px;border-radius:50%;background:var(--ink);color:#fff;font-weight:700;font-size:15px;
+  display:flex;align-items:center;justify-content:center;margin-bottom:14px;
+}
+.step h3{font-size:17.5px;margin-bottom:7px;letter-spacing:-.01em}
+.step p{color:var(--soft);font-size:15px}
+
+.why{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.why div{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+.why h3{font-size:17px;margin-bottom:6px;display:flex;align-items:center;gap:9px}
+.why p{color:var(--soft);font-size:15px}
+.ico{font-size:19px}
+
+/* ---------- pricing ---------- */
+.prices{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;max-width:660px}
+.price{
+  border:1.5px solid var(--line);border-radius:var(--radius);padding:28px 24px;background:#fff;position:relative;
+}
+.price.best{border-color:var(--ink);box-shadow:0 16px 40px -26px rgba(20,25,35,.5)}
+.badge{
+  position:absolute;top:-12px;left:24px;background:var(--ink);color:#fff;font-size:11.5px;font-weight:700;
+  padding:4px 12px;border-radius:999px;letter-spacing:.03em;
+}
+.amount{font-size:44px;font-weight:700;letter-spacing:-.035em;line-height:1}
+.amount .unit{font-size:16px;font-weight:600;color:var(--soft);letter-spacing:0}
+.price h3{font-size:16px;color:var(--soft);font-weight:600;margin-bottom:10px}
+.price ul{list-style:none;margin-top:16px}
+.price li{font-size:14.5px;color:var(--soft);padding-left:22px;position:relative;margin-bottom:7px}
+.price li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:700}
+.pricenote{margin-top:22px;font-size:14px;color:var(--soft)}
+
+/* ---------- contact ---------- */
+.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:44px;align-items:start}
+.ways{display:flex;flex-direction:column;gap:12px;margin-top:22px}
+.way{
+  display:flex;align-items:center;gap:13px;background:#fff;border:1px solid var(--line);
+  border-radius:13px;padding:15px 17px;text-decoration:none;color:var(--ink);transition:.16s;
+}
+.way:hover{border-color:var(--ink);transform:translateX(3px)}
+.way b{display:block;font-size:15px}
+.way small{color:var(--soft);font-size:13px}
+.wico{
+  width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+  font-size:17px;flex:0 0 38px;
+}
+form{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+label{display:block;font-size:13.5px;font-weight:600;margin-bottom:6px}
+input,textarea{
+  width:100%;border:1.5px solid var(--line);border-radius:11px;padding:12px 14px;font:inherit;font-size:15px;
+  margin-bottom:15px;transition:.15s;background:#fff;color:var(--ink);font-family:inherit;
+}
+input:focus,textarea:focus{outline:0;border-color:var(--ink)}
+textarea{min-height:82px;resize:vertical}
+.formbtns{display:flex;gap:10px;flex-wrap:wrap}
+.formnote{font-size:12.5px;color:var(--soft);margin-top:14px}
+
+footer{padding:34px 0;border-top:1px solid var(--line);font-size:13.5px;color:var(--soft)}
+.fbar{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+.legal{font-size:11.5px;color:#9aa3b0;margin-top:12px;max-width:60em}
+
+@media(max-width:860px){
+  .hero-grid,.contact-grid{grid-template-columns:1fr;gap:34px}
+  .steps,.why,.prices{grid-template-columns:1fr}
+  .hero{padding:44px 0 40px}
+  section{padding:48px 0}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap hd">
+    <div class="logo"><span class="dot"></span>Revlytap</div>
+    <div class="hd-right">
+      <div class="lang">
+        <button id="b-en" class="on" onclick="setLang('en')">EN</button>
+        <button id="b-es" onclick="setLang('es')">ES</button>
+      </div>
+      <a class="btn btn-dark btn-sm" href="#contact">
+        <span data-en>Get in touch</span><span data-es>Contactame</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<div class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">
+        <span data-en>⭐ Serving restaurants across New York</span>
+        <span data-es>⭐ Para restaurantes de Nueva York</span>
+      </div>
+      <h1>
+        <span data-en>More Google reviews, <em>with one tap.</em></span>
+        <span data-es>Más reseñas en Google, <em>con un solo toque.</em></span>
+      </h1>
+      <p class="lead">
+        <span data-en>A small stand for your counter or table. Your customer taps their phone on it — or scans the QR — and lands straight on your Google review page. No app to download, nothing to install, no monthly fee.</span>
+        <span data-es>Un pequeño soporte para tu mostrador o tus mesas. Tu cliente apoya el celular — o escanea el QR — y le abre directo la página para dejarte la reseña en Google. Sin descargar ninguna app, sin instalar nada y sin abono mensual.</span>
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-wa" id="cta-wa" href="#contact">
+          <span data-en>Message me on WhatsApp</span><span data-es>Escribime por WhatsApp</span>
+        </a>
+        <a class="btn btn-ghost" href="#how">
+          <span data-en>See how it works</span><span data-es>Ver cómo funciona</span>
+        </a>
+      </div>
+      <div class="trust">
+        <span><b class="tick">✓</b> <span data-en>Works with any phone</span><span data-es>Funciona con cualquier celular</span></span>
+        <span><b class="tick">✓</b> <span data-en>Ready to use out of the box</span><span data-es>Listo para usar</span></span>
+        <span><b class="tick">✓</b> <span data-en>One-time payment</span><span data-es>Pago único</span></span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3><span data-en>HOW DID WE DO?</span><span data-es>HOW DID WE DO?</span></h3>
+      <div class="gletters">
+        <i style="color:#ea4335">G</i><i style="color:#fbbc04">o</i><i style="color:#4285f4">o</i><i style="color:#34a853">g</i><i style="color:#ea4335">l</i><i style="color:#fbbc04">e</i>
+      </div>
+      <div class="stars">★★★★★</div>
+      <div class="card-row">
+        <div class="mini">TAP</div>
+        <div class="mini"><svg class="qrgrid" viewBox="0 0 21 21" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg"><rect width="21" height="21" fill="#fff"/><g fill="#15181c"><rect x="0" y="0" width="7" height="1"/><rect x="0" y="6" width="7" height="1"/><rect x="0" y="0" width="1" height="7"/><rect x="6" y="0" width="1" height="7"/><rect x="2" y="2" width="3" height="3"/><rect x="14" y="0" width="7" height="1"/><rect x="14" y="6" width="7" height="1"/><rect x="14" y="0" width="1" height="7"/><rect x="20" y="0" width="1" height="7"/><rect x="16" y="2" width="3" height="3"/><rect x="0" y="14" width="7" height="1"/><rect x="0" y="20" width="7" height="1"/><rect x="0" y="14" width="1" height="7"/><rect x="6" y="14" width="1" height="7"/><rect x="2" y="16" width="3" height="3"/><rect x="9" y="1" width="1" height="1"/><rect x="9" y="3" width="1" height="2"/><rect x="10" y="2" width="1" height="1"/><rect x="11" y="4" width="1" height="1"/><rect x="8" y="8" width="2" height="1"/><rect x="11" y="8" width="1" height="1"/><rect x="13" y="8" width="2" height="1"/><rect x="17" y="8" width="1" height="1"/><rect x="19" y="8" width="2" height="1"/><rect x="9" y="10" width="1" height="1"/><rect x="12" y="10" width="2" height="1"/><rect x="16" y="10" width="1" height="1"/><rect x="18" y="10" width="2" height="1"/><rect x="8" y="12" width="1" height="1"/><rect x="10" y="12" width="2" height="1"/><rect x="14" y="12" width="1" height="1"/><rect x="17" y="12" width="2" height="1"/><rect x="9" y="14" width="2" height="1"/><rect x="13" y="14" width="1" height="1"/><rect x="16" y="14" width="2" height="1"/><rect x="20" y="14" width="1" height="1"/><rect x="8" y="16" width="1" height="1"/><rect x="11" y="16" width="2" height="1"/><rect x="15" y="16" width="1" height="1"/><rect x="18" y="16" width="1" height="1"/><rect x="9" y="18" width="1" height="1"/><rect x="12" y="18" width="1" height="1"/><rect x="14" y="18" width="2" height="1"/><rect x="17" y="18" width="2" height="1"/><rect x="8" y="20" width="2" height="1"/><rect x="11" y="20" width="1" height="1"/><rect x="13" y="20" width="1" height="1"/><rect x="16" y="20" width="2" height="1"/><rect x="8" y="9" width="1" height="2"/><rect x="10" y="13" width="1" height="2"/><rect x="12" y="15" width="1" height="2"/><rect x="15" y="9" width="1" height="2"/><rect x="19" y="16" width="1" height="3"/></g></svg></div>
+      </div>
+      <small>
+        <span data-en>TAP YOUR PHONE &nbsp;·&nbsp; OR SCAN THE CODE</span>
+        <span data-es>APOYÁ EL CELULAR &nbsp;·&nbsp; O ESCANEÁ EL CÓDIGO</span>
+      </small>
+    </div>
+  </div>
+</div>
+
+<!-- ================= HOW ================= -->
+<section id="how" class="alt">
+  <div class="wrap">
+    <h2><span data-en>How it works</span><span data-es>Cómo funciona</span></h2>
+    <p class="sub">
+      <span data-en>Three steps. You do the first one once, and your customers do the rest.</span>
+      <span data-es>Tres pasos. El primero lo hacés una sola vez, el resto lo hacen tus clientes.</span>
+    </p>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h3><span data-en>I link it to your business</span><span data-es>Lo conecto a tu negocio</span></h3>
+        <p>
+          <span data-en>You give me your restaurant's name, I connect the stand to your Google review page and hand it to you ready. There is nothing for you to configure.</span>
+          <span data-es>Me pasás el nombre de tu local, yo conecto el soporte a tu página de reseñas de Google y te lo entrego listo. No tenés que configurar nada.</span>
+        </p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3><span data-en>Put it on the counter</span><span data-es>Lo ponés en el mostrador</span></h3>
+        <p>
+          <span data-en>Next to the register, on the tables, or wherever your customer waits. It stands on its own and takes up almost no space.</span>
+          <span data-es>Al lado de la caja, en las mesas o donde tu cliente espera. Se apoya solo y casi no ocupa lugar.</span>
+        </p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3><span data-en>They tap, they review</span><span data-es>Apoyan el celular y reseñan</span></h3>
+        <p>
+          <span data-en>The customer holds their phone near it and your review page opens by itself. If their phone doesn't do NFC, the QR code does exactly the same thing.</span>
+          <span data-es>El cliente acerca el celular y se le abre sola tu página de reseñas. Si su celular no tiene NFC, el código QR hace exactamente lo mismo.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHY ================= -->
+<section>
+  <div class="wrap">
+    <h2><span data-en>Why it makes a difference</span><span data-es>Por qué cambia las cosas</span></h2>
+    <p class="sub">
+      <span data-en>Most happy customers never leave a review — not because they don't want to, but because finding your page takes too many steps.</span>
+      <span data-es>La mayoría de los clientes contentos nunca deja una reseña — no porque no quiera, sino porque encontrar tu página lleva demasiados pasos.</span>
+    </p>
+    <div class="why">
+      <div>
+        <h3><span class="ico">📍</span><span data-en>You climb in the map</span><span data-es>Subís en el mapa</span></h3>
+        <p>
+          <span data-en>Google shows the places people actually talk about. More reviews, more recent, means more people find you when they search for food near them.</span>
+          <span data-es>Google muestra los lugares de los que la gente habla. Más reseñas y más recientes significa que más gente te encuentra cuando busca dónde comer cerca.</span>
+        </p>
+      </div>
+      <div>
+        <h3><span class="ico">⚡</span><span data-en>Zero friction</span><span data-es>Cero fricción</span></h3>
+        <p>
+          <span data-en>No searching, no typing, no app. One tap and the review screen is already open — that's the whole reason it works.</span>
+          <span data-es>Sin buscar, sin tipear, sin app. Un toque y la pantalla de reseña ya está abierta — por eso funciona.</span>
+        </p>
+      </div>
+      <div>
+        <h3><span class="ico">🔁</span><span data-en>You can change it later</span><span data-es>Se puede cambiar después</span></h3>
+        <p>
+          <span data-en>If you move, rebrand or open a second location, I can point the same stand somewhere else. You don't buy a new one.</span>
+          <span data-es>Si te mudás, cambiás de nombre o abrís otro local, redirijo el mismo soporte a donde haga falta. No comprás uno nuevo.</span>
+        </p>
+      </div>
+      <div>
+        <h3><span class="ico">💵</span><span data-en>You pay once</span><span data-es>Pagás una sola vez</span></h3>
+        <p>
+          <span data-en>No subscription, no contract, no card on file. You buy the stand and it's yours.</span>
+          <span data-es>Sin suscripción, sin contrato, sin dejar la tarjeta. Comprás el soporte y es tuyo.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRICING ================= -->
+<section class="alt" id="pricing">
+  <div class="wrap">
+    <h2><span data-en>Pricing</span><span data-es>Precios</span></h2>
+    <p class="sub">
+      <span data-en>Simple. Delivered and set up in person, anywhere in the city.</span>
+      <span data-es>Simple. Te lo llevo y lo dejo funcionando en persona, en cualquier punto de la ciudad.</span>
+    </p>
+    <div class="prices">
+      <div class="price">
+        <h3><span data-en>Single stand</span><span data-es>Una unidad</span></h3>
+        <div class="amount">$30</div>
+        <ul>
+          <li><span data-en>Linked to your Google page</span><span data-es>Conectado a tu página de Google</span></li>
+          <li><span data-en>NFC tap + QR code</span><span data-es>NFC + código QR</span></li>
+          <li><span data-en>Delivered ready to use</span><span data-es>Entregado listo para usar</span></li>
+        </ul>
+      </div>
+      <div class="price best">
+        <div class="badge"><span data-en>BEST VALUE</span><span data-es>MÁS CONVENIENTE</span></div>
+        <h3><span data-en>Two stands</span><span data-es>Dos unidades</span></h3>
+        <div class="amount">$40 <span class="unit" data-en>total</span><span class="unit" data-es>en total</span></div>
+        <ul>
+          <li><span data-en>Everything above, ×2</span><span data-es>Todo lo anterior, ×2</span></li>
+          <li><span data-en>One at the register, one at the tables</span><span data-es>Uno en la caja y otro en las mesas</span></li>
+          <li><span data-en>$20 each instead of $30</span><span data-es>$20 cada uno en vez de $30</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="pricenote">
+      <span data-en>Need more than two, or one for each table? Message me and I'll quote you.</span>
+      <span data-es>¿Necesitás más de dos, o uno por mesa? Escribime y te paso precio.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <h2><span data-en>Let's talk</span><span data-es>Hablemos</span></h2>
+      <p class="sub" style="margin-bottom:0">
+        <span data-en>Tell me your restaurant and I'll bring one over so you can try it. No commitment.</span>
+        <span data-es>Contame de tu local y te llevo uno para que lo pruebes. Sin compromiso.</span>
+      </p>
+      <div class="ways">
+        <a class="way" id="way-wa" href="#">
+          <span class="wico" style="background:#e6f9ee;color:#1fb857">✆</span>
+          <span><b>WhatsApp</b><small id="wa-label">—</small></span>
+        </a>
+        <a class="way" id="way-tel" href="#">
+          <span class="wico" style="background:#eaf1fe;color:#4285f4">☎</span>
+          <span><b><span data-en>Call me</span><span data-es>Llamame</span></b><small id="tel-label">—</small></span>
+        </a>
+        <a class="way" id="way-mail" href="#">
+          <span class="wico" style="background:#fdf3e0;color:#d9930a">✉</span>
+          <span><b>Email</b><small id="mail-label">—</small></span>
+        </a>
+      </div>
+    </div>
+
+    <form id="lead" onsubmit="return false">
+      <label for="f-name"><span data-en>Your name</span><span data-es>Tu nombre</span></label>
+      <input id="f-name" autocomplete="name">
+      <label for="f-biz"><span data-en>Restaurant name</span><span data-es>Nombre del local</span></label>
+      <input id="f-biz" autocomplete="organization">
+      <label for="f-phone"><span data-en>Phone</span><span data-es>Teléfono</span></label>
+      <input id="f-phone" inputmode="tel" autocomplete="tel">
+      <label for="f-msg"><span data-en>Anything else? (optional)</span><span data-es>¿Algo más? (opcional)</span></label>
+      <textarea id="f-msg"></textarea>
+      <div class="formbtns">
+        <button class="btn btn-wa" onclick="send('wa')">
+          <span data-en>Send by WhatsApp</span><span data-es>Enviar por WhatsApp</span>
+        </button>
+        <button class="btn btn-ghost" onclick="send('mail')">
+          <span data-en>Send by email</span><span data-es>Enviar por email</span>
+        </button>
+      </div>
+      <p class="formnote">
+        <span data-en>The button opens WhatsApp or your email app with the message already written — nothing is stored on this page.</span>
+        <span data-es>El botón te abre WhatsApp o tu app de mail con el mensaje ya escrito — esta página no guarda ningún dato.</span>
+      </p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fbar">
+      <div class="logo" style="font-size:16px"><span class="dot"></span>Revlytap</div>
+      <div>
+        <span data-en>Tap-to-review stands · New York</span>
+        <span data-es>Soportes tap-to-review · Nueva York</span>
+      </div>
+    </div>
+    <p class="legal">
+      Google and the Google logo are trademarks of Google LLC. Revlytap is not affiliated with, sponsored by or endorsed by Google.
+      Reviews are left voluntarily by your customers and we do not filter, screen or influence what they write.
+    </p>
+  </div>
+</footer>
+
+<script>
+/* ------------------------------------------------------------------
+   EDIT THESE THREE LINES AND THE WHOLE PAGE UPDATES
+   ------------------------------------------------------------------ */
+var WA_INTL   = "5491165926964";             // WhatsApp, digits only, country code first
+var WA_SHOW   = "+54 9 11 6592-6964";        // how the WhatsApp number is displayed
+var TEL_INTL  = "13478091837";               // number for phone calls
+var TEL_SHOW  = "+1 (347) 809-1837";         // how the phone number is displayed
+var EMAIL     = "santinobaglieri@hotmail.com";
+/* ---------------------------------------------------------------- */
+
+document.getElementById('wa-label').textContent   = WA_SHOW;
+document.getElementById('tel-label').textContent  = TEL_SHOW;
+document.getElementById('mail-label').textContent = EMAIL;
+document.getElementById('way-tel').href  = 'tel:+' + TEL_INTL;
+document.getElementById('way-mail').href = 'mailto:' + EMAIL;
+
+function greeting(){
+  return document.documentElement.getAttribute('data-lang') === 'es'
+    ? 'Hola! Vi revlytap.com y me interesa.'
+    : 'Hi! I saw revlytap.com and I am interested.';
+}
+function waHref(text){
+  return 'https://wa.me/' + WA_INTL + '?text=' + encodeURIComponent(text);
+}
+document.getElementById('way-wa').href = waHref(greeting());
+document.getElementById('cta-wa').href = waHref(greeting());
+
+function setLang(l){
+  document.documentElement.setAttribute('data-lang', l);
+  document.documentElement.lang = l;
+  document.getElementById('b-en').className = l === 'en' ? 'on' : '';
+  document.getElementById('b-es').className = l === 'es' ? 'on' : '';
+  document.getElementById('way-wa').href = waHref(greeting());
+  document.getElementById('cta-wa').href = waHref(greeting());
+}
+
+function val(id){ return document.getElementById(id).value.trim(); }
+
+function send(how){
+  var es = document.documentElement.getAttribute('data-lang') === 'es';
+  var L = es
+    ? {i:'Hola! Vi revlytap.com y me interesa.', n:'Nombre', b:'Local', p:'Teléfono', s:'Consulta desde revlytap.com'}
+    : {i:'Hi! I saw revlytap.com and I am interested.', n:'Name', b:'Restaurant', p:'Phone', s:'Enquiry from revlytap.com'};
+  var lines = [L.i, ''];
+  if (val('f-name'))  lines.push(L.n + ': ' + val('f-name'));
+  if (val('f-biz'))   lines.push(L.b + ': ' + val('f-biz'));
+  if (val('f-phone')) lines.push(L.p + ': ' + val('f-phone'));
+  if (val('f-msg'))   lines.push('', val('f-msg'));
+  var body = lines.join('\n');
+  if (how === 'wa') {
+    window.open(waHref(body), '_blank');
+  } else {
+    window.location.href = 'mailto:' + EMAIL
+      + '?subject=' + encodeURIComponent(L.s)
+      + '&body=' + encodeURIComponent(body);
+  }
+  return false;
+}
+
+/* open in Spanish if the visitor's phone is set to Spanish */
+if ((navigator.language || 'en').toLowerCase().indexOf('es') === 0) setLang('es');
+</script>
+</body>
+</html>
