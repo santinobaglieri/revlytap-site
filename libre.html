@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Revlytap</title>
+<style>
+  :root { --ink:#1a1a1a; --muted:#6b6b6b; --line:#e6e6e6; --bg:#fff; }
+  @media (prefers-color-scheme: dark) {
+    :root { --ink:#f2f2f2; --muted:#9a9a9a; --line:#2e2e2e; --bg:#141414; }
+  }
+  * { box-sizing:border-box; }
+  html, body { height:100%; }
+  body {
+    margin:0; background:var(--bg); color:var(--ink);
+    font:16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding:24px;
+  }
+  .marca { font-size:13px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); }
+  .num {
+    font-size:min(46vw, 34vh); font-weight:700; line-height:1;
+    margin:.12em 0 .06em; letter-spacing:-.03em; font-variant-numeric:tabular-nums;
+  }
+  .etiqueta { font-size:14px; color:var(--muted); }
+  .nota {
+    margin-top:2.2em; padding-top:1.2em; border-top:1px solid var(--line);
+    max-width:30ch; font-size:14px; color:var(--muted);
+  }
+</style>
+</head>
+<body>
+  <div class="marca">Revlytap</div>
+  <div class="num" id="n">?</div>
+  <div class="etiqueta">Tag sin asignar</div>
+  <p class="nota">Este soporte todav&iacute;a no apunta a ning&uacute;n negocio.</p>
+<script>
+  var m = new URLSearchParams(location.search).get("t");
+  m = m && m.match(/\d+/);
+  document.getElementById("n").textContent = m ? String(parseInt(m[0], 10)) : "?";
+</script>
+</body>
+</html>
