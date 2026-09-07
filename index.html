@@ -425,6 +425,8 @@ footer{padding:34px 0;border-top:1px solid var(--line);font-size:13.5px;color:va
       <input id="f-phone" inputmode="tel" autocomplete="tel">
       <label for="f-msg"><span data-en>Anything else? (optional)</span><span data-es>¿Algo más? (opcional)</span></label>
       <textarea id="f-msg"></textarea>
+      <input id="f-web" tabindex="-1" autocomplete="off" aria-hidden="true"
+             style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
       <div class="formbtns">
         <button class="btn btn-wa" onclick="send('wa')">
           <span data-en>Send by WhatsApp</span><span data-es>Enviar por WhatsApp</span>
@@ -434,8 +436,8 @@ footer{padding:34px 0;border-top:1px solid var(--line);font-size:13.5px;color:va
         </button>
       </div>
       <p class="formnote">
-        <span data-en>The button opens WhatsApp or your email app with the message already written — nothing is stored on this page.</span>
-        <span data-es>El botón te abre WhatsApp o tu app de mail con el mensaje ya escrito — esta página no guarda ningún dato.</span>
+        <span data-en>The button opens WhatsApp or your email app with the message already written. I keep what you type only to get back to you — nothing else, and I never pass it on.</span>
+        <span data-es>El botón te abre WhatsApp o tu app de mail con el mensaje ya escrito. Guardo lo que escribís sólo para responderte — nada más, y no se lo paso a nadie.</span>
       </p>
     </form>
   </div>
@@ -507,6 +509,7 @@ function send(how){
   if (val('f-phone')) lines.push(L.p + ': ' + val('f-phone'));
   if (val('f-msg'))   lines.push('', val('f-msg'));
   var body = lines.join('\n');
+  avisarLead('enviado');
   if (how === 'wa') {
     window.open(waHref(body), '_blank');
   } else {
@@ -519,6 +522,43 @@ function send(how){
 
 /* open in Spanish if the visitor's phone is set to Spanish */
 if ((navigator.language || 'en').toLowerCase().indexOf('es') === 0) setLang('es');
+
+/* --------------------------------------------------------------------
+   El caso que mas leads costaba: alguien completa el formulario, se
+   arrepiente del boton y cierra. Antes eso no dejaba rastro. Ahora sale
+   igual cuando se va de la pagina, por sendBeacon, que el navegador
+   entrega aunque la pestana ya este cerrada.
+   -------------------------------------------------------------------- */
+var LEAD_API = 'https://api.revlytap.com/lead';
+var leadMandado = false;
+
+function avisarLead(estado){
+  if (leadMandado) return;
+  var d = {
+    nombre:      val('f-name'),
+    restaurante: val('f-biz'),
+    telefono:    val('f-phone'),
+    mensaje:     val('f-msg'),
+    web:         val('f-web'),
+    idioma:      document.documentElement.getAttribute('data-lang') || 'en',
+    estado:      estado
+  };
+  if (!d.nombre && !d.telefono && !d.restaurante) return;   // no hay nada que avisar
+  leadMandado = true;
+  try {
+    /* text/plain evita el preflight, que sendBeacon no sabe hacer. */
+    var paquete = new Blob([JSON.stringify(d)], {type: 'text/plain'});
+    if (!navigator.sendBeacon || !navigator.sendBeacon(LEAD_API, paquete)) {
+      fetch(LEAD_API, {method:'POST', body: JSON.stringify(d), keepalive: true})
+        .catch(function(){});
+    }
+  } catch (e) { /* si no se puede avisar, el formulario sigue andando igual */ }
+}
+
+document.addEventListener('visibilitychange', function(){
+  if (document.visibilityState === 'hidden') avisarLead('incompleto');
+});
+window.addEventListener('pagehide', function(){ avisarLead('incompleto'); });
 </script>
 </body>
 </html>
