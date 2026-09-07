@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /libre.html
+Disallow: /t.html
+
+Sitemap: https://www.revlytap.com/sitemap.xml
