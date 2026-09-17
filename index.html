@@ -3,19 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Revlytap — Get more Google reviews with one tap</title>
-<meta name="description" content="Tap-to-review stands for restaurants in New York. Your customer taps their phone or scans the QR and lands straight on your Google review page. No app, no setup, no monthly fee.">
+<title>Revlytap — More Google reviews, with one tap · New York</title>
+<meta name="description" content="Tap-to-review stands for New York restaurants. $30 each, pay once, no subscription. Your guest taps their phone or scans the QR and lands straight on your Google review page. Delivered and set up in person.">
 <meta property="og:title" content="Revlytap — Get more Google reviews with one tap">
-<meta property="og:description" content="Tap-to-review stands for restaurants in New York. No app, no monthly fee.">
+<meta property="og:description" content="$30, one payment, no subscription. Your guest taps and your Google review page opens. Delivered and set up in person, anywhere in New York.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.revlytap.com/">
 <meta property="og:site_name" content="Revlytap">
-<meta property="og:image" content="https://www.revlytap.com/og-image.png">
+<meta property="og:image" content="https://www.revlytap.com/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Revlytap tap-to-review stand for restaurants">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://www.revlytap.com/og-image.png">
+<meta name="twitter:image" content="https://www.revlytap.com/og-image.jpg">
 <link rel="canonical" href="https://www.revlytap.com/">
 <meta name="theme-color" content="#1a1a1a">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⭐</text></svg>">
@@ -170,9 +170,55 @@ footer{padding:34px 0;border-top:1px solid var(--line);font-size:13.5px;color:va
 .fbar{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
 .legal{font-size:11.5px;color:#9aa3b0;margin-top:12px;max-width:60em}
 
+/* ---------- fotos ---------- */
+.shot{width:100%;height:auto;border-radius:20px;display:block;background:var(--tint);
+  box-shadow:0 22px 50px -30px rgba(20,25,35,.55);border:1px solid var(--line)}
+.gal{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.gal figure{margin:0}
+.gal figcaption{color:var(--soft);font-size:14px;margin-top:10px}
+
+/* ---------- comparacion ---------- */
+.vs{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:720px}
+.vs > div{border-radius:var(--radius);padding:24px;border:1.5px solid var(--line);background:#fff}
+.vs .mine{border-color:var(--ink);box-shadow:0 16px 40px -28px rgba(20,25,35,.5)}
+.vs h3{font-size:16px;margin-bottom:14px;letter-spacing:-.01em}
+.vs ul{list-style:none}
+.vs li{font-size:14.5px;color:var(--soft);padding-left:24px;position:relative;margin-bottom:9px}
+.vs .them li::before{content:"✕";position:absolute;left:0;color:#c9ccd4;font-weight:700}
+.vs .mine li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:700}
+
+/* ---------- provato ---------- */
+.prov{display:grid;grid-template-columns:1.05fr .95fr;gap:46px;align-items:center}
+.tag{display:inline-block;background:#eaf6ee;color:#1e8e46;border-radius:999px;
+  padding:5px 13px;font-size:12.5px;font-weight:700;letter-spacing:.03em;margin-bottom:16px}
+.phone{margin:0 auto;width:250px;max-width:100%;border:9px solid #15181c;border-radius:34px;
+  overflow:hidden;background:#15181c;box-shadow:0 26px 56px -30px rgba(20,25,35,.6)}
+.phone img{display:block;width:100%;height:auto}
+
+/* ---------- faq ---------- */
+.faq{max-width:760px}
+.faq details{border-bottom:1px solid var(--line);padding:16px 0}
+.faq summary{cursor:pointer;font-weight:600;font-size:16px;list-style:none;
+  display:flex;justify-content:space-between;gap:16px;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--soft);font-weight:700;font-size:20px;line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq p{color:var(--soft);font-size:15px;margin-top:10px}
+
+/* ---------- barra fija en el celular ---------- */
+.sticky{display:none}
+@media(max-width:640px){
+  .sticky{
+    display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;gap:9px;padding:10px 14px;
+    background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line);
+  }
+  .sticky .btn{flex:1;padding:13px 10px;font-size:14.5px}
+  body{padding-bottom:74px}
+}
+
 @media(max-width:860px){
-  .hero-grid,.contact-grid{grid-template-columns:1fr;gap:34px}
-  .steps,.why,.prices{grid-template-columns:1fr}
+  .hero-grid,.contact-grid,.prov{grid-template-columns:1fr;gap:34px}
+  .steps,.why,.prices,.gal,.vs{grid-template-columns:1fr}
   .hero{padding:44px 0 40px}
   section{padding:48px 0}
 }
@@ -186,13 +232,13 @@ footer{padding:34px 0;border-top:1px solid var(--line);font-size:13.5px;color:va
       "@id": "https://www.revlytap.com/#org",
       "name": "Revlytap",
       "url": "https://www.revlytap.com/",
-      "logo": "https://www.revlytap.com/og-image.png",
+      "logo": "https://www.revlytap.com/og-image.jpg",
       "areaServed": { "@type": "City", "name": "New York" },
       "contactPoint": [{
         "@type": "ContactPoint",
         "contactType": "sales",
         "telephone": "+13478091837",
-        "email": "santinobaglieri@hotmail.com",
+        "email": "santino@revlytap.com",
         "availableLanguage": ["en", "es"]
       }]
     },
@@ -200,11 +246,11 @@ footer{padding:34px 0;border-top:1px solid var(--line);font-size:13.5px;color:va
       "@type": "Product",
       "name": "Revlytap tap-to-review stand",
       "description": "NFC and QR countertop stand that sends customers straight to your Google review page. No app, no setup, no monthly fee.",
-      "image": "https://www.revlytap.com/og-image.png",
+      "image": "https://www.revlytap.com/og-image.jpg",
       "brand": { "@id": "https://www.revlytap.com/#org" },
       "offers": [
         { "@type": "Offer", "name": "One stand", "price": "30", "priceCurrency": "USD", "availability": "https://schema.org/InStock" },
-        { "@type": "Offer", "name": "Two stands", "price": "40", "priceCurrency": "USD", "availability": "https://schema.org/InStock" }
+        { "@type": "Offer", "name": "Two stands", "price": "45", "priceCurrency": "USD", "availability": "https://schema.org/InStock" }
       ]
     }
   ]
@@ -245,7 +291,7 @@ footer{padding:34px 0;border-top:1px solid var(--line);font-size:13.5px;color:va
         <span data-es>Un pequeño soporte para tu mostrador o tus mesas. Tu cliente apoya el celular — o escanea el QR — y le abre directo la página para dejarte la reseña en Google. Sin descargar ninguna app, sin instalar nada y sin abono mensual.</span>
       </p>
       <div class="cta-row">
-        <a class="btn btn-wa" id="cta-wa" href="https://wa.me/5491165926964?text=Hi!%20I%20saw%20revlytap.com%20and%20I%20am%20interested.">
+        <a class="btn btn-wa" id="cta-wa" href="https://wa.me/13478091837?text=Hi!%20I%20saw%20revlytap.com%20and%20I%20am%20interested.">
           <span data-en>Message me on WhatsApp</span><span data-es>Escribime por WhatsApp</span>
         </a>
         <a class="btn btn-ghost" href="#how">
@@ -259,21 +305,10 @@ footer{padding:34px 0;border-top:1px solid var(--line);font-size:13.5px;color:va
       </div>
     </div>
 
-    <div class="card">
-      <h3><span data-en>HOW DID WE DO?</span><span data-es>HOW DID WE DO?</span></h3>
-      <div class="gletters">
-        <i style="color:#ea4335">G</i><i style="color:#fbbc04">o</i><i style="color:#4285f4">o</i><i style="color:#34a853">g</i><i style="color:#ea4335">l</i><i style="color:#fbbc04">e</i>
-      </div>
-      <div class="stars">★★★★★</div>
-      <div class="card-row">
-        <div class="mini">TAP</div>
-        <div class="mini"><svg class="qrgrid" viewBox="0 0 21 21" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg"><rect width="21" height="21" fill="#fff"/><g fill="#15181c"><rect x="0" y="0" width="7" height="1"/><rect x="0" y="6" width="7" height="1"/><rect x="0" y="0" width="1" height="7"/><rect x="6" y="0" width="1" height="7"/><rect x="2" y="2" width="3" height="3"/><rect x="14" y="0" width="7" height="1"/><rect x="14" y="6" width="7" height="1"/><rect x="14" y="0" width="1" height="7"/><rect x="20" y="0" width="1" height="7"/><rect x="16" y="2" width="3" height="3"/><rect x="0" y="14" width="7" height="1"/><rect x="0" y="20" width="7" height="1"/><rect x="0" y="14" width="1" height="7"/><rect x="6" y="14" width="1" height="7"/><rect x="2" y="16" width="3" height="3"/><rect x="9" y="1" width="1" height="1"/><rect x="9" y="3" width="1" height="2"/><rect x="10" y="2" width="1" height="1"/><rect x="11" y="4" width="1" height="1"/><rect x="8" y="8" width="2" height="1"/><rect x="11" y="8" width="1" height="1"/><rect x="13" y="8" width="2" height="1"/><rect x="17" y="8" width="1" height="1"/><rect x="19" y="8" width="2" height="1"/><rect x="9" y="10" width="1" height="1"/><rect x="12" y="10" width="2" height="1"/><rect x="16" y="10" width="1" height="1"/><rect x="18" y="10" width="2" height="1"/><rect x="8" y="12" width="1" height="1"/><rect x="10" y="12" width="2" height="1"/><rect x="14" y="12" width="1" height="1"/><rect x="17" y="12" width="2" height="1"/><rect x="9" y="14" width="2" height="1"/><rect x="13" y="14" width="1" height="1"/><rect x="16" y="14" width="2" height="1"/><rect x="20" y="14" width="1" height="1"/><rect x="8" y="16" width="1" height="1"/><rect x="11" y="16" width="2" height="1"/><rect x="15" y="16" width="1" height="1"/><rect x="18" y="16" width="1" height="1"/><rect x="9" y="18" width="1" height="1"/><rect x="12" y="18" width="1" height="1"/><rect x="14" y="18" width="2" height="1"/><rect x="17" y="18" width="2" height="1"/><rect x="8" y="20" width="2" height="1"/><rect x="11" y="20" width="1" height="1"/><rect x="13" y="20" width="1" height="1"/><rect x="16" y="20" width="2" height="1"/><rect x="8" y="9" width="1" height="2"/><rect x="10" y="13" width="1" height="2"/><rect x="12" y="15" width="1" height="2"/><rect x="15" y="9" width="1" height="2"/><rect x="19" y="16" width="1" height="3"/></g></svg></div>
-      </div>
-      <small>
-        <span data-en>TAP YOUR PHONE &nbsp;·&nbsp; OR SCAN THE CODE</span>
-        <span data-es>APOYÁ EL CELULAR &nbsp;·&nbsp; O ESCANEÁ EL CÓDIGO</span>
-      </small>
-    </div>
+    <figure style="margin:0">
+      <img class="shot" src="foto-mostrador.jpg" width="1200" height="1096" loading="eager"
+           alt="Revlytap tap-to-review stand on a restaurant counter">
+    </figure>
   </div>
 </div>
 
@@ -310,6 +345,35 @@ footer{padding:34px 0;border-top:1px solid var(--line);font-size:13.5px;color:va
           <span data-es>El cliente acerca el celular y se le abre sola tu página de reseñas. Si su celular no tiene NFC, el código QR hace exactamente lo mismo.</span>
         </p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOTOS ================= -->
+<section id="photos">
+  <div class="wrap">
+    <h2><span data-en>What it looks like on your counter</span><span data-es>Cómo queda en tu mostrador</span></h2>
+    <p class="sub">
+      <span data-en>Rigid PVC, 4½ × 5¾ inches, stands on its own. It takes up less space than a salt shaker.</span>
+      <span data-es>PVC rígido de 11,4 × 14,6 cm, se apoya solo. Ocupa menos que un salero.</span>
+    </p>
+    <div class="gal">
+      <figure>
+        <img class="shot" src="foto-caja.jpg" width="1200" height="1200" loading="lazy"
+             alt="Revlytap stand next to a cafe register">
+        <figcaption>
+          <span data-en>Next to the register, where they pay.</span>
+          <span data-es>Al lado de la caja, donde pagan.</span>
+        </figcaption>
+      </figure>
+      <figure>
+        <img class="shot" src="foto-barra.jpg" width="1200" height="1200" loading="lazy"
+             alt="Revlytap stand on the counter where guests wait">
+        <figcaption>
+          <span data-en>Or wherever they wait with the phone already in their hand.</span>
+          <span data-es>O donde esperan, que es cuando ya tienen el teléfono en la mano.</span>
+        </figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -355,6 +419,46 @@ footer{padding:34px 0;border-top:1px solid var(--line);font-size:13.5px;color:va
   </div>
 </section>
 
+<!-- ================= PROVATO ================= -->
+<section class="alt" id="menu">
+  <div class="wrap prov">
+    <div>
+      <span class="tag">PROVATO</span>
+      <h2><span data-en>And your menu, with the reviews of every dish</span><span data-es>Y tu menú, con las reseñas de cada plato</span></h2>
+      <p class="sub" style="margin-bottom:22px">
+        <span data-en>Same idea, the other way round. Your guest opens your menu on their phone and sees every dish with a photo, in their own language, and how many people mention it in your Google reviews. The dish your regulars already love is the one the new table orders.</span>
+        <span data-es>La misma idea, al revés. Tu cliente abre el menú en el celular y ve cada plato con foto, en su idioma, y cuánta gente lo nombra en tus reseñas de Google. El plato que tus clientes ya eligen es el que pide la mesa nueva.</span>
+      </p>
+      <div class="why" style="gap:14px;margin-bottom:26px">
+        <div style="padding:16px 18px">
+          <h3 style="font-size:15px;margin-bottom:4px"><span class="ico">🌐</span><span data-en>In their language</span><span data-es>En su idioma</span></h3>
+          <p style="font-size:14px"><span data-en>The menu translates itself for the table that doesn't speak English.</span><span data-es>El menú se traduce solo para la mesa que no habla inglés.</span></p>
+        </div>
+        <div style="padding:16px 18px">
+          <h3 style="font-size:15px;margin-bottom:4px"><span class="ico">📷</span><span data-en>Every dish with a photo</span><span data-es>Cada plato con foto</span></h3>
+          <p style="font-size:14px"><span data-en>People order what they can see. No more "what is that?"</span><span data-es>La gente pide lo que ve. Se termina el "¿qué es eso?"</span></p>
+        </div>
+      </div>
+      <div class="cta-row">
+        <a class="btn btn-dark" href="https://menu.revlytap.com/m/go-nonna" target="_blank" rel="noopener">
+          <span data-en>Open a real menu</span><span data-es>Abrir un menú de verdad</span>
+        </a>
+        <a class="btn btn-ghost" href="#contact">
+          <span data-en>Ask me about mine</span><span data-es>Preguntame por el mío</span>
+        </a>
+      </div>
+      <p class="pricenote" style="margin-top:16px">
+        <span data-en>That's a live demo built for a Long Island City restaurant. Yours is priced per menu — message me and I'll tell you what it takes.</span>
+        <span data-es>Ese es un demo real armado para un restaurante de Long Island City. El tuyo se cotiza por menú — escribime y te cuento.</span>
+      </p>
+    </div>
+    <div class="phone">
+      <img src="provato-menu.jpg" width="560" height="1173" loading="lazy"
+           alt="Provato digital menu on a phone">
+    </div>
+  </div>
+</section>
+
 <!-- ================= PRICING ================= -->
 <section class="alt" id="pricing">
   <div class="wrap">
@@ -376,18 +480,82 @@ footer{padding:34px 0;border-top:1px solid var(--line);font-size:13.5px;color:va
       <div class="price best">
         <div class="badge"><span data-en>BEST VALUE</span><span data-es>MÁS CONVENIENTE</span></div>
         <h3><span data-en>Two stands</span><span data-es>Dos unidades</span></h3>
-        <div class="amount">$40 <span class="unit" data-en>total</span><span class="unit" data-es>en total</span></div>
+        <div class="amount">$45 <span class="unit" data-en>total</span><span class="unit" data-es>en total</span></div>
         <ul>
           <li><span data-en>Everything above, ×2</span><span data-es>Todo lo anterior, ×2</span></li>
-          <li><span data-en>One at the register, one at the tables</span><span data-es>Uno en la caja y otro en las mesas</span></li>
-          <li><span data-en>$20 each instead of $30</span><span data-es>$20 cada uno en vez de $30</span></li>
+          <li><span data-en>One at the register, one where people wait</span><span data-es>Uno en la caja y otro donde la gente espera</span></li>
+          <li><span data-en>You save $15</span><span data-es>Ahorrás $15</span></li>
         </ul>
       </div>
     </div>
     <p class="pricenote">
-      <span data-en>Need more than two, or one for each table? Message me and I'll quote you.</span>
-      <span data-es>¿Necesitás más de dos, o uno por mesa? Escribime y te paso precio.</span>
+      <span data-en>One payment. No subscription, no contract, no card on file. Need one for every table? Message me and I'll quote you.</span>
+      <span data-es>Un solo pago. Sin suscripción, sin contrato, sin dejar la tarjeta. ¿Querés uno por mesa? Escribime y te paso precio.</span>
     </p>
+
+    <div class="vs" style="margin-top:44px">
+      <div class="them">
+        <h3><span data-en>The ones that charge monthly</span><span data-es>Los que cobran por mes</span></h3>
+        <ul>
+          <li><span data-en>$15–$25 every month, forever</span><span data-es>$15 a $25 todos los meses, para siempre</span></li>
+          <li><span data-en>Card on file, cancel through support</span><span data-es>Dejás la tarjeta y cancelás por soporte</span></li>
+          <li><span data-en>Ships in a box, you set it up</span><span data-es>Llega en una caja y lo configurás vos</span></li>
+          <li><span data-en>Stops working the day you stop paying</span><span data-es>Deja de andar el día que dejás de pagar</span></li>
+        </ul>
+      </div>
+      <div class="mine">
+        <h3>Revlytap</h3>
+        <ul>
+          <li><span data-en>$30 once. That's the whole price</span><span data-es>$30 una vez. Ese es todo el precio</span></li>
+          <li><span data-en>No card, no account, no contract</span><span data-es>Sin tarjeta, sin cuenta, sin contrato</span></li>
+          <li><span data-en>I bring it and set it up in front of you</span><span data-es>Te lo llevo y lo dejo andando delante tuyo</span></li>
+          <li><span data-en>It's yours. It keeps working</span><span data-es>Es tuyo. Sigue andando</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section id="faq">
+  <div class="wrap faq">
+    <h2><span data-en>The questions I get on the street</span><span data-es>Lo que me preguntan en la calle</span></h2>
+    <p class="sub"><span data-en>Straight answers. No small print.</span><span data-es>Respuestas derechas. Sin letra chica.</span></p>
+
+    <details open>
+      <summary><span data-en>Is this a subscription? What do I pay every month?</span><span data-es>¿Es una suscripción? ¿Cuánto pago por mes?</span></summary>
+      <p><span data-en>Nothing. You pay once and the stand is yours. There are companies charging $15 to $25 a month for exactly this. I don't.</span><span data-es>Nada. Lo pagás una vez y el soporte es tuyo. Hay empresas que cobran de $15 a $25 por mes por esto mismo. Yo no.</span></p>
+    </details>
+
+    <details>
+      <summary><span data-en>Does it work with iPhone?</span><span data-es>¿Anda con iPhone?</span></summary>
+      <p><span data-en>Every iPhone from 2018 on (XS, XR and newer) reads it with nothing installed — just hold the phone near it. Android too. Older phones use the QR code, which goes to exactly the same place.</span><span data-es>Todos los iPhone de 2018 en adelante (XS, XR y posteriores) lo leen sin instalar nada — sólo acercás el celular. Android también. Los más viejos usan el código QR, que lleva exactamente al mismo lugar.</span></p>
+    </details>
+
+    <details>
+      <summary><span data-en>We already have a QR code.</span><span data-es>Ya tenemos un código QR.</span></summary>
+      <p><span data-en>And how many people actually use it? A QR takes five steps: pull out the phone, open the camera, aim, wait, tap the link. This takes one — you put the phone down. The QR is on the stand anyway, so you don't lose anything, you add.</span><span data-es>¿Y cuánta gente lo usa? Un QR son cinco pasos: sacar el celular, abrir la cámara, apuntar, esperar y tocar el link. Esto es uno: apoyar el teléfono. El QR está igual en el soporte, así que no perdés nada, sumás.</span></p>
+    </details>
+
+    <details>
+      <summary><span data-en>Will Google penalize me for asking for reviews?</span><span data-es>¿Google me puede penalizar por pedir reseñas?</span></summary>
+      <p><span data-en>No. Asking a customer for an honest review is what Google wants. What's against the rules is paying for good reviews, or screening so only happy customers get to write one. This opens your normal review page — whoever wants to leave one star leaves one star.</span><span data-es>No. Pedirle a un cliente una reseña honesta es lo que Google quiere. Lo que está prohibido es pagar por reseñas buenas, o filtrar para que sólo los contentos dejen reseña. Esto abre tu página normal — el que quiere poner una estrella la pone.</span></p>
+    </details>
+
+    <details>
+      <summary><span data-en>What if I move, rebrand or open another location?</span><span data-es>¿Y si me mudo, cambio de nombre o abro otro local?</span></summary>
+      <p><span data-en>Send me a message and I point the same stand somewhere else. You don't buy a new one and you don't reprint anything.</span><span data-es>Me escribís y redirijo el mismo soporte a donde haga falta. No comprás uno nuevo ni reimprimís nada.</span></p>
+    </details>
+
+    <details>
+      <summary><span data-en>Do I have to set anything up?</span><span data-es>¿Tengo que configurar algo?</span></summary>
+      <p><span data-en>No. You tell me your restaurant's name, I link the stand to your Google review page and hand it to you working. You can test it with your own phone before I leave.</span><span data-es>No. Me decís el nombre de tu local, conecto el soporte a tu página de reseñas y te lo entrego andando. Lo probás con tu propio celular antes de que me vaya.</span></p>
+    </details>
+
+    <details>
+      <summary><span data-en>Who are you?</span><span data-es>¿Quién sos?</span></summary>
+      <p><span data-en>Santino. I live in Woodside, Queens, and I put these in restaurants around the city myself — I deliver them in person, I don't ship boxes. English or Spanish, whichever you prefer.</span><span data-es>Santino. Vivo en Woodside, Queens, y pongo estos soportes en restaurantes de la ciudad yo mismo — los llevo en persona, no mando cajas. En inglés o en español, como te quede más cómodo.</span></p>
+    </details>
   </div>
 </section>
 
@@ -401,17 +569,17 @@ footer{padding:34px 0;border-top:1px solid var(--line);font-size:13.5px;color:va
         <span data-es>Contame de tu local y te llevo uno para que lo pruebes. Sin compromiso.</span>
       </p>
       <div class="ways">
-        <a class="way" id="way-wa" href="https://wa.me/5491165926964?text=Hi!%20I%20saw%20revlytap.com%20and%20I%20am%20interested.">
+        <a class="way" id="way-wa" href="https://wa.me/13478091837?text=Hi!%20I%20saw%20revlytap.com%20and%20I%20am%20interested.">
           <span class="wico" style="background:#e6f9ee;color:#1fb857">✆</span>
-          <span><b>WhatsApp</b><small id="wa-label">+54 9 11 6592-6964</small></span>
+          <span><b>WhatsApp</b><small id="wa-label">+1 (347) 809-1837</small></span>
         </a>
         <a class="way" id="way-tel" href="tel:+13478091837">
           <span class="wico" style="background:#eaf1fe;color:#4285f4">☎</span>
           <span><b><span data-en>Call me</span><span data-es>Llamame</span></b><small id="tel-label">+1 (347) 809-1837</small></span>
         </a>
-        <a class="way" id="way-mail" href="mailto:santinobaglieri@hotmail.com">
+        <a class="way" id="way-mail" href="mailto:santino@revlytap.com">
           <span class="wico" style="background:#fdf3e0;color:#d9930a">✉</span>
-          <span><b>Email</b><small id="mail-label">santinobaglieri@hotmail.com</small></span>
+          <span><b>Email</b><small id="mail-label">santino@revlytap.com</small></span>
         </a>
       </div>
     </div>
@@ -459,15 +627,24 @@ footer{padding:34px 0;border-top:1px solid var(--line);font-size:13.5px;color:va
   </div>
 </footer>
 
+<div class="sticky">
+  <a class="btn btn-wa" id="sticky-wa" href="https://wa.me/13478091837">
+    <span data-en>WhatsApp me</span><span data-es>Escribime</span>
+  </a>
+  <a class="btn btn-ghost" href="tel:+13478091837">
+    <span data-en>Call</span><span data-es>Llamar</span>
+  </a>
+</div>
+
 <script>
 /* ------------------------------------------------------------------
    EDIT THESE THREE LINES AND THE WHOLE PAGE UPDATES
    ------------------------------------------------------------------ */
-var WA_INTL   = "5491165926964";             // WhatsApp, digits only, country code first
-var WA_SHOW   = "+54 9 11 6592-6964";        // how the WhatsApp number is displayed
+var WA_INTL   = "13478091837";               // WhatsApp, digits only, country code first
+var WA_SHOW   = "+1 (347) 809-1837";         // how the WhatsApp number is displayed
 var TEL_INTL  = "13478091837";               // number for phone calls
 var TEL_SHOW  = "+1 (347) 809-1837";         // how the phone number is displayed
-var EMAIL     = "santinobaglieri@hotmail.com";
+var EMAIL     = "santino@revlytap.com";
 /* ---------------------------------------------------------------- */
 
 document.getElementById('wa-label').textContent   = WA_SHOW;
@@ -484,16 +661,18 @@ function greeting(){
 function waHref(text){
   return 'https://wa.me/' + WA_INTL + '?text=' + encodeURIComponent(text);
 }
-document.getElementById('way-wa').href = waHref(greeting());
-document.getElementById('cta-wa').href = waHref(greeting());
+['way-wa','cta-wa','sticky-wa'].forEach(function(id){
+  var e = document.getElementById(id); if (e) e.href = waHref(greeting());
+});
 
 function setLang(l){
   document.documentElement.setAttribute('data-lang', l);
   document.documentElement.lang = l;
   document.getElementById('b-en').className = l === 'en' ? 'on' : '';
   document.getElementById('b-es').className = l === 'es' ? 'on' : '';
-  document.getElementById('way-wa').href = waHref(greeting());
-  document.getElementById('cta-wa').href = waHref(greeting());
+  ['way-wa','cta-wa','sticky-wa'].forEach(function(id){
+    var e = document.getElementById(id); if (e) e.href = waHref(greeting());
+  });
 }
 
 function val(id){ return document.getElementById(id).value.trim(); }
