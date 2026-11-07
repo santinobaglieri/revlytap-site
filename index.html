@@ -124,17 +124,11 @@ h2{font-size:clamp(25px,3.4vw,35px);letter-spacing:-.025em;line-height:1.15;marg
 .ico{font-size:19px}
 
 /* ---------- pricing ---------- */
-.prices{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;max-width:660px}
+.prices{display:grid;grid-template-columns:1fr;gap:22px;max-width:330px}
 .price{
   border:1.5px solid var(--line);border-radius:var(--radius);padding:28px 24px;background:#fff;position:relative;
 }
-.price.best{border-color:var(--ink);box-shadow:0 16px 40px -26px rgba(20,25,35,.5)}
-.badge{
-  position:absolute;top:-12px;left:24px;background:var(--ink);color:#fff;font-size:11.5px;font-weight:700;
-  padding:4px 12px;border-radius:999px;letter-spacing:.03em;
-}
 .amount{font-size:44px;font-weight:700;letter-spacing:-.035em;line-height:1}
-.amount .unit{font-size:16px;font-weight:600;color:var(--soft);letter-spacing:0}
 .price h3{font-size:16px;color:var(--soft);font-weight:600;margin-bottom:10px}
 .price ul{list-style:none;margin-top:16px}
 .price li{font-size:14.5px;color:var(--soft);padding-left:22px;position:relative;margin-bottom:7px}
@@ -249,8 +243,7 @@ footer{padding:34px 0;border-top:1px solid var(--line);font-size:13.5px;color:va
       "image": "https://www.revlytap.com/og-image.jpg",
       "brand": { "@id": "https://www.revlytap.com/#org" },
       "offers": [
-        { "@type": "Offer", "name": "One stand", "price": "30", "priceCurrency": "USD", "availability": "https://schema.org/InStock" },
-        { "@type": "Offer", "name": "Two stands", "price": "45", "priceCurrency": "USD", "availability": "https://schema.org/InStock" }
+        { "@type": "Offer", "name": "One stand", "price": "30", "priceCurrency": "USD", "availability": "https://schema.org/InStock" }
       ]
     }
   ]
@@ -475,16 +468,6 @@ footer{padding:34px 0;border-top:1px solid var(--line);font-size:13.5px;color:va
           <li><span data-en>Linked to your Google page</span><span data-es>Conectado a tu página de Google</span></li>
           <li><span data-en>NFC tap + QR code</span><span data-es>NFC + código QR</span></li>
           <li><span data-en>Delivered ready to use</span><span data-es>Entregado listo para usar</span></li>
-        </ul>
-      </div>
-      <div class="price best">
-        <div class="badge"><span data-en>BEST VALUE</span><span data-es>MÁS CONVENIENTE</span></div>
-        <h3><span data-en>Two stands</span><span data-es>Dos unidades</span></h3>
-        <div class="amount">$45 <span class="unit" data-en>total</span><span class="unit" data-es>en total</span></div>
-        <ul>
-          <li><span data-en>Everything above, ×2</span><span data-es>Todo lo anterior, ×2</span></li>
-          <li><span data-en>One at the register, one where people wait</span><span data-es>Uno en la caja y otro donde la gente espera</span></li>
-          <li><span data-en>You save $15</span><span data-es>Ahorrás $15</span></li>
         </ul>
       </div>
     </div>
